@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">TicTacToe</string>
+    <string name="tic_tac_toe">Tic-Tac-Toe</string>
+    <string name="player_x">Player - X</string>
+    <string name="player_o">Player - O</string>
+    <string name="reset_board">Reset Board</string>
+    <string name="play">PLAY</string>
+    <string name="logo_yellow">logo_yellow</string>
+    <string name="settings">Settings</string>
+    <string name="quit">QUIT</string>
+    <string name="music_volume">Music Volume</string>
+    <string name="back_arrow">back_arrow</string>
+</resources>
