@@ -1,265 +1,275 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/background_gradient"
-    tools:context=".MainActivity">
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background_gradient"
+        tools:context=".MainActivity">
 
     <RelativeLayout
-        android:id="@+id/logo"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:layout_margin="20dp"
-        android:layout_marginTop="60dp"
-        android:background="@drawable/logo_background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+            android:id="@+id/logo"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_margin="20dp"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/logo_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/back_button"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_centerVertical="true"
-            android:layout_toStartOf="@+id/logo_text"
-            android:layout_toLeftOf="@+id/logo_text"
-            android:background="@color/trans0"
-            android:contentDescription="@string/back_arrow"
-            android:src="@drawable/back_arrow"
-            android:visibility="gone" /> <!--Back Button-->
+                android:id="@+id/back_button"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@+id/logo_text"
+                android:layout_toLeftOf="@+id/logo_text"
+                android:background="@color/trans0"
+                android:contentDescription="@string/back_arrow"
+                android:src="@drawable/back_arrow"
+                android:visibility="gone"/> <!--Back Button-->
         <TextView
-            android:id="@+id/logo_text"
-            style="@style/TextTheme_logo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="@string/tic_tac_toe" /> <!--Title-->
+                android:id="@+id/logo_text"
+                style="@style/TextTheme_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/tic_tac_toe"/> <!--Title-->
     </RelativeLayout> <!--Top Bar-->
     <RelativeLayout
-        android:id="@+id/start_screen"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <Button
-            android:id="@+id/play"
-            style="@style/TextTheme_player"
-            android:layout_width="300dp"
-            android:layout_height="100dp"
-            android:layout_centerHorizontal="true"
-            android:background="@color/trans0"
-            android:text="@string/play"
-            android:textSize="50sp" /> <!--Play Button-->
-        <Button
-            android:id="@+id/settings"
-            style="@style/TextTheme_player"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:layout_below="@id/play"
-            android:layout_centerHorizontal="true"
-            android:background="@color/trans0"
-            android:text="@string/settings"
-            android:textSize="30sp" /> <!--Settings Button-->
-        <Button
-            android:id="@+id/quit"
-            style="@style/TextTheme_player"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:layout_below="@id/settings"
-            android:layout_centerHorizontal="true"
-            android:background="@color/trans0"
-            android:text="@string/quit"
-            android:textSize="30sp" /> <!--Quit Button-->
-    </RelativeLayout> <!--Start Screen-->
-    <RelativeLayout
-        android:id="@+id/settings_menu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/settings_title"
-            style="@style/TextTheme_player"
-            android:layout_width="300dp"
-            android:layout_height="80dp"
-            android:layout_centerHorizontal="true"
-            android:background="@color/trans0"
-            android:text="@string/settings"
-            android:textAlignment="center"
-            android:textSize="50sp" /> <!--Settings Title-->
-        <TextView
-            android:id="@+id/music_volume"
-            style="@style/TextTheme_player"
-            android:layout_width="280dp"
-            android:layout_height="50dp"
-            android:layout_below="@id/settings_title"
-            android:layout_centerHorizontal="true"
-            android:background="@color/trans0"
-            android:text="@string/music_volume"
-            android:textSize="30sp" /> <!--Music Volume Title-->
-        <android.support.v7.widget.AppCompatSeekBar
-            android:id="@+id/volume_control"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/music_volume"
-            android:layout_centerHorizontal="true"
-            android:progressDrawable="@drawable/seekbar_progress"
-            android:thumb="@drawable/seekbar_thumb" /> <!--Volume Control-->
-    </RelativeLayout> <!--Settings Tab-->
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/play_area"
-        android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <LinearLayout
-            android:id="@+id/player_board"
+            android:id="@+id/start_screen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="50dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/board"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.375"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <TextView
-                android:id="@+id/player_x"
-                style="@style/TextTheme_player"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/player_x" /> <!--Player-X-->
-            <View
-                android:layout_width="4dp"
-                android:layout_height="35dp"
-                android:background="@color/bright_gold"
-                android:clickable="false" /> <!--separator-->
-            <TextView
-                android:id="@+id/player_o"
-                style="@style/TextTheme_player"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="end"
-                android:text="@string/player_o"
-                tools:ignore="RelativeOverlap" /> <!--Player-O-->
-        </LinearLayout><!--Player Board-->
-        <RelativeLayout
-            android:id="@+id/board"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:layout_marginTop="44dp"
-            android:background="@drawable/board_background"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/player_board">
-
-            <Button
-                android:id="@+id/but1"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_margin="10dp"
-                android:background="@color/trans0" /> <!--r1c1-->
-            <Button
-                android:id="@+id/but2"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_margin="10dp"
-                android:layout_toEndOf="@id/but1"
-                android:layout_toRightOf="@id/but1"
-                android:background="@color/trans0" /> <!--r1c2-->
-            <Button
-                android:id="@+id/but3"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_margin="10dp"
-                android:layout_toEndOf="@id/but2"
-                android:layout_toRightOf="@id/but2"
-                android:background="@color/trans0" /> <!--r1c3-->
-            <Button
-                android:id="@+id/but4"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_below="@id/but1"
-                android:layout_margin="10dp"
-                android:background="@color/trans0" /> <!--r2c1-->
-            <Button
-                android:id="@+id/but5"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_below="@id/but2"
-                android:layout_margin="10dp"
-                android:layout_toEndOf="@id/but4"
-                android:layout_toRightOf="@id/but4"
-                android:background="@color/trans0" /> <!--r2c2-->
-            <Button
-                android:id="@+id/but6"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_below="@id/but3"
-                android:layout_margin="10dp"
-                android:layout_toEndOf="@id/but5"
-                android:layout_toRightOf="@id/but5"
-                android:background="@color/trans0" /> <!--r2c3-->
-            <Button
-                android:id="@+id/but7"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_below="@id/but4"
-                android:layout_margin="10dp"
-                android:background="@color/trans0" /> <!--r3c1-->
-            <Button
-                android:id="@+id/but8"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_below="@id/but5"
-                android:layout_margin="10dp"
-                android:layout_toEndOf="@id/but7"
-                android:layout_toRightOf="@id/but7"
-                android:background="@color/trans0" /> <!--r3c2-->
-            <Button
-                android:id="@+id/but9"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_below="@id/but6"
-                android:layout_margin="10dp"
-                android:layout_toEndOf="@id/but8"
-                android:layout_toRightOf="@id/but8"
-                android:background="@color/trans0" /> <!--r3c3-->
-        </RelativeLayout><!--Buttons Layout-->
-        <Button
-            android:id="@+id/reset_button"
-            style="@style/TextTheme_player"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:layout_marginBottom="50dp"
-            android:background="@color/trans50"
-            android:text="@string/reset_board"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" /><!--Reset Button-->
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+                android:id="@+id/play"
+                style="@style/TextTheme_player"
+                android:layout_width="300dp"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:background="@color/trans0"
+                android:text="@string/play"
+                android:textSize="50sp"/> <!--Play Button-->
+        <Button
+                android:id="@+id/settings"
+                style="@style/TextTheme_player"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/play"
+                android:layout_centerHorizontal="true"
+                android:background="@color/trans0"
+                android:text="@string/settings"
+                android:textSize="30sp"/> <!--Settings Button-->
+        <Button
+                android:id="@+id/quit"
+                style="@style/TextTheme_player"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/settings"
+                android:layout_centerHorizontal="true"
+                android:background="@color/trans0"
+                android:text="@string/quit"
+                android:textSize="30sp"/> <!--Quit Button-->
+    </RelativeLayout> <!--Start Screen-->
+    <RelativeLayout
+            android:id="@+id/settings_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+                android:id="@+id/settings_title"
+                style="@style/TextTheme_player"
+                android:layout_width="300dp"
+                android:layout_height="80dp"
+                android:layout_centerHorizontal="true"
+                android:background="@color/trans0"
+                android:text="@string/settings"
+                android:textAlignment="center"
+                android:textSize="50sp"/> <!--Settings Title-->
+        <TextView
+                android:id="@+id/music_volume"
+                style="@style/TextTheme_player"
+                android:layout_width="280dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/settings_title"
+                android:layout_centerHorizontal="true"
+                android:background="@color/trans0"
+                android:text="@string/music_volume"
+                android:textSize="30sp"/> <!--Music Volume Title-->
+        <android.support.v7.widget.AppCompatSeekBar
+                android:id="@+id/volume_control"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/music_volume"
+                android:layout_centerHorizontal="true"
+                android:progressDrawable="@drawable/seekbar_progress"
+                android:thumb="@drawable/seekbar_thumb"/> <!--Volume Control-->
+    </RelativeLayout> <!--Settings Tab-->
+    <android.support.constraint.ConstraintLayout
+            android:id="@+id/play_area"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+                android:id="@+id/player_board"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="50dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@+id/board"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.375"
+                app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                    android:id="@+id/player_x"
+                    style="@style/TextTheme_player"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/player_x"/> <!--Player-X-->
+            <View
+                    android:layout_width="4dp"
+                    android:layout_height="35dp"
+                    android:background="@color/bright_gold"
+                    android:clickable="false"/> <!--separator-->
+            <TextView
+                    android:id="@+id/player_o"
+                    style="@style/TextTheme_player"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:text="@string/player_o"
+                    tools:ignore="RelativeOverlap"/> <!--Player-O-->
+        </LinearLayout><!--Player Board-->
+        <RelativeLayout
+                android:id="@+id/board"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_marginTop="44dp"
+                android:background="@drawable/board_background"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.495"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/player_board">
+
+            <Button
+                    android:id="@+id/but1"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="10dp"
+                    android:contentDescription="@string/_00"
+                    android:background="@color/trans0"/> <!--r0c0-->
+            <Button
+                    android:id="@+id/but2"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="10dp"
+                    android:layout_toEndOf="@id/but1"
+                    android:contentDescription="@string/_01"
+                    android:layout_toRightOf="@id/but1"
+                    android:background="@color/trans0"/> <!--r0c1-->
+            <Button
+                    android:id="@+id/but3"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="10dp"
+                    android:layout_toEndOf="@id/but2"
+                    android:contentDescription="@string/_02"
+                    android:layout_toRightOf="@id/but2"
+                    android:background="@color/trans0"/> <!--r0c2-->
+            <Button
+                    android:id="@+id/but4"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_below="@id/but1"
+                    android:contentDescription="@string/_10"
+                    android:layout_margin="10dp"
+                    android:background="@color/trans0"/> <!--r1c0-->
+            <Button
+                    android:id="@+id/but5"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_below="@id/but2"
+                    android:contentDescription="@string/_11"
+                    android:layout_margin="10dp"
+                    android:layout_toEndOf="@id/but4"
+                    android:layout_toRightOf="@id/but4"
+                    android:background="@color/trans0"/> <!--r1c1-->
+            <Button
+                    android:id="@+id/but6"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_below="@id/but3"
+                    android:contentDescription="@string/_12"
+                    android:layout_margin="10dp"
+                    android:layout_toEndOf="@id/but5"
+                    android:layout_toRightOf="@id/but5"
+                    android:background="@color/trans0"/> <!--r1c2-->
+            <Button
+                    android:id="@+id/but7"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_below="@id/but4"
+                    android:contentDescription="@string/_20"
+                    android:layout_margin="10dp"
+                    android:background="@color/trans0"/> <!--r2c0-->
+            <Button
+                    android:id="@+id/but8"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_below="@id/but5"
+                    android:contentDescription="@string/_21"
+                    android:layout_margin="10dp"
+                    android:layout_toEndOf="@id/but7"
+                    android:layout_toRightOf="@id/but7"
+                    android:background="@color/trans0"/> <!--r2c1-->
+            <Button
+                    android:id="@+id/but9"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_below="@id/but6"
+                    android:contentDescription="@string/_22"
+                    android:layout_margin="10dp"
+                    android:layout_toEndOf="@id/but8"
+                    android:layout_toRightOf="@id/but8"
+                    android:background="@color/trans0"/> <!--r2c2-->
+        </RelativeLayout><!--Buttons Layout-->
+        <Button
+                android:id="@+id/reset_button"
+                style="@style/TextTheme_player"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_marginBottom="50dp"
+                android:background="@color/trans50"
+                android:text="@string/reset_board"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"/><!--Reset Button-->
     </android.support.constraint.ConstraintLayout><!--Play Area-->
 </android.support.constraint.ConstraintLayout>
