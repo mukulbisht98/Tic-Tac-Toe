@@ -48,9 +48,12 @@ class MainActivity : AppCompatActivity() {
     private var doubleBackPressed = false
 
     // for audio
-    private var mediaPlayer: MediaPlayer? = null
+    private var mediaMusic: MediaPlayer? = null
     private var audioManager: AudioManager? = null
-
+    private var beep: MediaPlayer? = null
+    private var boop: MediaPlayer? = null
+    private var cheer: MediaPlayer? = null
+    private var draw: MediaPlayer? = null
     // for algorithm
     private var playerSwitch: Boolean? = null
     private var arr = Array(3) { CharArray(3) }
@@ -66,12 +69,14 @@ class MainActivity : AppCompatActivity() {
             playerX!!.text = Html.fromHtml("Player - X", Html.FROM_HTML_MODE_LEGACY)
             it!!.setBackgroundResource(R.drawable.x)
             arr[index1][index2] = 'X'
+            beep!!.start()
             false
         } else {
             playerX!!.text = Html.fromHtml("<u>Player - X</u>", Html.FROM_HTML_MODE_LEGACY)
             playerO!!.text = Html.fromHtml("Player - O", Html.FROM_HTML_MODE_LEGACY)
             it!!.setBackgroundResource(R.drawable.o)
             arr[index1][index2] = 'O'
+            boop!!.start()
             true
         }
         it.isClickable = false
@@ -209,47 +214,51 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     private fun won(): Boolean {
         // Check Horizontal
+        var won = false
         for (i in 0 until arr.size) {
             if (arr[i][0] == 'X' && arr[i][1] == 'X' && arr[i][2] == 'X') {
                 logoText!!.text = "X WON!"
-                return true
+                won = true
             } else if (arr[i][0] == 'O' && arr[i][1] == 'O' && arr[i][2] == 'O') {
                 logoText!!.text = "O WON!!"
-                return true
+                won =  true
             }
         }
         // Check Vertical
         for (i in 0 until arr.size) {
             if (arr[0][i] == 'X' && arr[1][i] == 'X' && arr[2][i] == 'X') {
                 logoText!!.text = "X WON!"
-                return true
+                won = true
             } else if (arr[0][i] == 'O' && arr[1][i] == 'O' && arr[2][i] == 'O') {
                 logoText!!.text = "O WON!!"
-                return true
+                won = true
             }
         }
         // Check Diagonal - 1
         if (arr[0][0] == 'X' && arr[1][1] == 'X' && arr[2][2] == 'X') {
             logoText!!.text = "X WON!"
-            return true
+            won = true
         } else if (arr[0][0] == 'O' && arr[1][1] == 'O' && arr[2][2] == 'O') {
             logoText!!.text = "O WON!!"
-            return true
+            won = true
         }
         // Check Diagonal - 2
         if (arr[0][2] == 'X' && arr[1][1] == 'X' && arr[2][0] == 'X') {
             logoText!!.text = "X WON!"
-            return true
+            won = true
         } else if (arr[0][2] == 'O' && arr[1][1] == 'O' && arr[2][0] == 'O') {
             logoText!!.text = "O WON!!"
-            return true
+            won = true
         }
         // Check Draw
         if (checkDraw()) {
             logoText!!.text = "DRAW!!"
-            return true
+            draw!!.start()
+            won = true
+        } else {
+            if(won) cheer!!.start()
         }
-        return false
+        return won
     }
 
     // Check for Draw
@@ -333,10 +342,12 @@ class MainActivity : AppCompatActivity() {
                 override fun onStartTrackingTouch(arg0: SeekBar) {}
 
                 override fun onProgressChanged(arg0: SeekBar, progress: Int, arg2: Boolean) {
-                    audioManager!!.setStreamVolume(
-                        AudioManager.STREAM_MUSIC,
-                        progress, 0
-                    )
+//                    audioManager!!.setStreamVolume(
+//                        AudioManager.STREAM_MUSIC,
+//                        progress, 0
+//                    )
+                    val mediaVol = progress.toFloat()/15
+                    mediaMusic!!.setVolume(mediaVol, mediaVol)
                 }
             })
         } catch (e: Exception) {
@@ -346,22 +357,26 @@ class MainActivity : AppCompatActivity() {
 
     //start music
     private fun startMusic() {
-        mediaPlayer = MediaPlayer.create(this, R.raw.bg_raw)
-        mediaPlayer!!.setOnPreparedListener {
+        mediaMusic = MediaPlayer.create(this, R.raw.bg_raw)
+        beep = MediaPlayer.create(this, R.raw.beep)
+        boop = MediaPlayer.create(this, R.raw.boop)
+        cheer = MediaPlayer.create(this, R.raw.cheer)
+        draw = MediaPlayer.create(this, R.raw.draw)
+        mediaMusic!!.setOnPreparedListener {
             playbackNow()
         }
     }
 
     // pause music
     private fun pausePlayback() {
-        mediaPlayer!!.pause()
+        mediaMusic!!.pause()
     }
 
     // start or resume music
     private fun playbackNow() {
-        mediaPlayer!!.setVolume(0.6f, 0.6f)
-        mediaPlayer!!.start()
-        mediaPlayer!!.isLooping = true
+        mediaMusic!!.setVolume(0.6f, 0.6f)
+        mediaMusic!!.start()
+        mediaMusic!!.isLooping = true
     }
 
     //on app focus loss
@@ -379,8 +394,8 @@ class MainActivity : AppCompatActivity() {
     // close app when back double pressed
     override fun onBackPressed() {
         if (doubleBackPressed) {
-            if (mediaPlayer != null) {
-                mediaPlayer!!.stop()
+            if (mediaMusic != null) {
+                mediaMusic!!.stop()
             }
             val a = Intent(Intent.ACTION_MAIN)
             a.addCategory(Intent.CATEGORY_HOME)
