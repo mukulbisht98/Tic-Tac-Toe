@@ -93,6 +93,7 @@ class MainActivity : AppCompatActivity() {
 
         // to start music
         startMusic()
+        initControls()
 
         // initializing components
         startScreen = findViewById(R.id.start_screen)
@@ -134,7 +135,6 @@ class MainActivity : AppCompatActivity() {
             logoText!!.translationX = 60F
         }
         settings!!.setOnClickListener {
-            initControls()
             backButton!!.visibility = View.VISIBLE
             settingsMenu!!.visibility = View.VISIBLE
             settingsMenu!!.alpha = 0.0f
@@ -221,7 +221,7 @@ class MainActivity : AppCompatActivity() {
                 won = true
             } else if (arr[i][0] == 'O' && arr[i][1] == 'O' && arr[i][2] == 'O') {
                 logoText!!.text = "O WON!!"
-                won =  true
+                won = true
             }
         }
         // Check Vertical
@@ -256,7 +256,7 @@ class MainActivity : AppCompatActivity() {
             draw!!.start()
             won = true
         } else {
-            if(won) cheer!!.start()
+            if (won) cheer!!.start()
         }
         return won
     }
@@ -342,11 +342,7 @@ class MainActivity : AppCompatActivity() {
                 override fun onStartTrackingTouch(arg0: SeekBar) {}
 
                 override fun onProgressChanged(arg0: SeekBar, progress: Int, arg2: Boolean) {
-//                    audioManager!!.setStreamVolume(
-//                        AudioManager.STREAM_MUSIC,
-//                        progress, 0
-//                    )
-                    val mediaVol = progress.toFloat()/15
+                    val mediaVol = progress.toFloat() / 15
                     mediaMusic!!.setVolume(mediaVol, mediaVol)
                 }
             })
