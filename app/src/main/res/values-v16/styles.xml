@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextTheme_logo">
+        <item name="android:textColor">@color/bright_gold</item>
+        <item name="android:textSize">40sp</item>
+        <item name="android:fontFamily">@font/roboto_light</item>
+    </style>
+    <style name="TextTheme_player">
+        <item name="android:textColor">@color/bright_gold</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:fontFamily">@font/roboto_light</item>
+    </style>
+</resources>

@@ -9,6 +9,9 @@
     <string name="quit">QUIT</string>
     <string name="player_x">Player - X</string>
     <string name="player_o">Player - O</string>
+    <string name="x_won">X WON!!</string>
+    <string name="o_won">O WON!!</string>
+    <string name="draw">DRAW!!</string>
     <string name="reset_board">Reset Board</string>
     <string name="_22">22</string>
     <string name="_21">21</string>

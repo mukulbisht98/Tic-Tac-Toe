@@ -1,5 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-
+<resources>
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
@@ -8,17 +7,5 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowFullscreen">true</item>
         <item name="android:screenOrientation">portrait</item>
-    </style>
-
-    <style name="TextTheme_logo">
-        <item name="android:textColor">@color/bright_gold</item>
-        <item name="android:textSize">40sp</item>
-        <item name="android:fontFamily" tools:targetApi="jelly_bean">@font/roboto_light</item>
-    </style>
-
-    <style name="TextTheme_player">
-        <item name="android:textColor">@color/bright_gold</item>
-        <item name="android:textSize">25sp</item>
-        <item name="android:fontFamily" tools:targetApi="jelly_bean">@font/roboto_light</item>
     </style>
 </resources>

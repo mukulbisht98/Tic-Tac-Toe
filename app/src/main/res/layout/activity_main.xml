@@ -162,8 +162,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="end"
-                    android:text="@string/player_o"
-                    tools:ignore="RelativeOverlap"/> <!--Player-O-->
+                    android:text="@string/player_o"/> <!--Player-O-->
         </LinearLayout><!--Player Board-->
         <RelativeLayout
                 android:id="@+id/board"

@@ -25,7 +25,7 @@ class SplashActivity : AppCompatActivity() {
         Handler().postDelayed({
             logoText.startAnimation(fadeInLtR)
             logoText.visibility = View.VISIBLE
-        },1000)
+        }, 1000)
         val staticTimeOut = 1800
         Handler().postDelayed({
             val homeIntent = Intent(this@SplashActivity, MainActivity::class.java)

@@ -1,19 +1,15 @@
 package com.xxluciferinxx.tictactoe
 
-import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
+import android.graphics.Paint
 import android.media.AudioManager
 import android.media.MediaPlayer
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
-import android.support.annotation.RequiresApi
 import android.support.constraint.ConstraintLayout
 import android.support.v7.app.AppCompatActivity
-import android.text.Html
-import android.util.Log
 import android.view.View
 import android.widget.*
 import android.widget.SeekBar.OnSeekBarChangeListener
@@ -54,39 +50,36 @@ class MainActivity : AppCompatActivity() {
     private var boop: MediaPlayer? = null
     private var cheer: MediaPlayer? = null
     private var draw: MediaPlayer? = null
+
     // for algorithm
     private var playerSwitch: Boolean? = null
     private var arr = Array(3) { CharArray(3) }
 
     // Click Listener for Board Button clicks
-    @RequiresApi(Build.VERSION_CODES.N)
     private var playerSwitchMoves: View.OnClickListener = View.OnClickListener {
         val contDes = it.contentDescription
         val index1 = contDes[0].toInt() - 48
         val index2 = contDes[1].toInt() - 48
         playerSwitch = if (playerSwitch!!) {
-            playerO!!.text = Html.fromHtml("<u>Player - O</u>", Html.FROM_HTML_MODE_LEGACY)
-            playerX!!.text = Html.fromHtml("Player - X", Html.FROM_HTML_MODE_LEGACY)
+            playerO!!.paintFlags = playerO!!.paintFlags xor Paint.UNDERLINE_TEXT_FLAG
+            playerX!!.paintFlags = playerX!!.paintFlags xor Paint.UNDERLINE_TEXT_FLAG
             it!!.setBackgroundResource(R.drawable.x)
             arr[index1][index2] = 'X'
             beep!!.start()
             false
         } else {
-            playerX!!.text = Html.fromHtml("<u>Player - X</u>", Html.FROM_HTML_MODE_LEGACY)
-            playerO!!.text = Html.fromHtml("Player - O", Html.FROM_HTML_MODE_LEGACY)
+            playerX!!.paintFlags = playerX!!.paintFlags xor Paint.UNDERLINE_TEXT_FLAG
+            playerO!!.paintFlags = playerO!!.paintFlags xor Paint.UNDERLINE_TEXT_FLAG
             it!!.setBackgroundResource(R.drawable.o)
             arr[index1][index2] = 'O'
             boop!!.start()
             true
         }
         it.isClickable = false
-        displayLog()
         if (won()) deactivateButtons()
     }
 
-
     // on create
-    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -119,7 +112,7 @@ class MainActivity : AppCompatActivity() {
 
         //initializing values
         playerSwitch = true
-        playerX!!.text = Html.fromHtml("<u>Player - X</u>", Html.FROM_HTML_MODE_LEGACY)
+        playerX!!.paintFlags = playerX!!.paintFlags or Paint.UNDERLINE_TEXT_FLAG
         arrayInitialize()
 
         //start screen listeners
@@ -203,56 +196,50 @@ class MainActivity : AppCompatActivity() {
             for (j in 0 until tempArray.size) tempArray[j] = '-'
             arr[i] = tempArray
         }
-        /*
-        * - - -
-        * - - -
-        * - - -
-        */
     }
 
     // Check for Winner
-    @SuppressLint("SetTextI18n")
     private fun won(): Boolean {
         // Check Horizontal
         var won = false
         for (i in 0 until arr.size) {
             if (arr[i][0] == 'X' && arr[i][1] == 'X' && arr[i][2] == 'X') {
-                logoText!!.text = "X WON!"
+                logoText!!.text = getString(R.string.x_won)
                 won = true
             } else if (arr[i][0] == 'O' && arr[i][1] == 'O' && arr[i][2] == 'O') {
-                logoText!!.text = "O WON!!"
+                logoText!!.text = getString(R.string.o_won)
                 won = true
             }
         }
         // Check Vertical
         for (i in 0 until arr.size) {
             if (arr[0][i] == 'X' && arr[1][i] == 'X' && arr[2][i] == 'X') {
-                logoText!!.text = "X WON!"
+                logoText!!.text = getString(R.string.x_won)
                 won = true
             } else if (arr[0][i] == 'O' && arr[1][i] == 'O' && arr[2][i] == 'O') {
-                logoText!!.text = "O WON!!"
+                logoText!!.text = getString(R.string.o_won)
                 won = true
             }
         }
         // Check Diagonal - 1
         if (arr[0][0] == 'X' && arr[1][1] == 'X' && arr[2][2] == 'X') {
-            logoText!!.text = "X WON!"
+            logoText!!.text = getString(R.string.x_won)
             won = true
         } else if (arr[0][0] == 'O' && arr[1][1] == 'O' && arr[2][2] == 'O') {
-            logoText!!.text = "O WON!!"
+            logoText!!.text = getString(R.string.o_won)
             won = true
         }
         // Check Diagonal - 2
         if (arr[0][2] == 'X' && arr[1][1] == 'X' && arr[2][0] == 'X') {
-            logoText!!.text = "X WON!"
+            logoText!!.text = getString(R.string.x_won)
             won = true
         } else if (arr[0][2] == 'O' && arr[1][1] == 'O' && arr[2][0] == 'O') {
-            logoText!!.text = "O WON!!"
+            logoText!!.text = getString(R.string.o_won)
             won = true
         }
         // Check Draw
         if (checkDraw()) {
-            logoText!!.text = "DRAW!!"
+            logoText!!.text = getString(R.string.draw)
             draw!!.start()
             won = true
         } else {
@@ -275,20 +262,7 @@ class MainActivity : AppCompatActivity() {
         return flag
     }
 
-    //display Array in Log
-    private fun displayLog() {
-        var str = ""
-        for (i in 0 until 3) {
-            for (j in 0 until 3) {
-                str += arr[i][j] + " "
-            }
-            str += " "
-        }
-        Log.i("arrayOut", str)
-    }
-
     // reset button function
-    @SuppressLint("SetTextI18n")
     private fun resetButtons() {
         button1!!.setBackgroundResource(R.color.trans0)
         button2!!.setBackgroundResource(R.color.trans0)
@@ -308,9 +282,8 @@ class MainActivity : AppCompatActivity() {
         button7!!.isClickable = true
         button8!!.isClickable = true
         button9!!.isClickable = true
-        logoText!!.text = "Tic-Tac-Toe"
+        logoText!!.text = getString(R.string.tic_tac_toe)
         arrayInitialize()
-        displayLog()
     }
 
     // Deactivate Board Buttons
