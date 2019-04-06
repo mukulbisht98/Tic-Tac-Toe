@@ -46,8 +46,8 @@ class MainActivity : AppCompatActivity() {
     // for audio
     private var mediaMusic: MediaPlayer? = null
     private var audioManager: AudioManager? = null
-    private var beep: MediaPlayer? = null
     private var boop: MediaPlayer? = null
+    private var beep: MediaPlayer? = null
     private var cheer: MediaPlayer? = null
     private var draw: MediaPlayer? = null
 
