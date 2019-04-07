@@ -1,48 +1,48 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="294.024dp"
-    android:height="294.024dp"
-    android:viewportWidth="294.024"
-    android:viewportHeight="294.024">
+        android:width="294.024dp"
+        android:height="294.024dp"
+        android:viewportWidth="294.024"
+        android:viewportHeight="294.024">
     <group
-        android:translateX="-2.988"
-        android:translateY="-2.988">
+            android:translateX="-2.988"
+            android:translateY="-2.988">
         <group
-            android:translateX="199.5"
-            android:translateY="6.5">
+                android:translateX="199.5"
+                android:translateY="6.5">
             <path
-                android:pathData="M1 0L0 287"
-                android:strokeWidth="7"
-                android:strokeColor="#FFD504"
-                android:strokeLineCap="round" />
+                    android:pathData="M1 0L0 287"
+                    android:strokeWidth="7"
+                    android:strokeColor="#FFD504"
+                    android:strokeLineCap="round"/>
         </group>
         <group
-            android:translateX="99.5"
-            android:translateY="6.5">
+                android:translateX="99.5"
+                android:translateY="6.5">
             <path
-                android:pathData="M1 0L0 287"
-                android:strokeWidth="7"
-                android:strokeColor="#FFD504"
-                android:strokeLineCap="round" />
+                    android:pathData="M1 0L0 287"
+                    android:strokeWidth="7"
+                    android:strokeColor="#FFD504"
+                    android:strokeLineCap="round"/>
         </group>
         <group
-            android:rotation="90"
-            android:translateX="293.5"
-            android:translateY="199.5">
+                android:rotation="90"
+                android:translateX="293.5"
+                android:translateY="199.5">
             <path
-                android:pathData="M1 0L0 287"
-                android:strokeWidth="7"
-                android:strokeColor="#FFD504"
-                android:strokeLineCap="round" />
+                    android:pathData="M1 0L0 287"
+                    android:strokeWidth="7"
+                    android:strokeColor="#FFD504"
+                    android:strokeLineCap="round"/>
         </group>
         <group
-            android:rotation="90"
-            android:translateX="293.5"
-            android:translateY="99.5">
+                android:rotation="90"
+                android:translateX="293.5"
+                android:translateY="99.5">
             <path
-                android:pathData="M1 0L0 287"
-                android:strokeWidth="7"
-                android:strokeColor="#FFD504"
-                android:strokeLineCap="round" />
+                    android:pathData="M1 0L0 287"
+                    android:strokeWidth="7"
+                    android:strokeColor="#FFD504"
+                    android:strokeLineCap="round"/>
         </group>
     </group>
 </vector>
