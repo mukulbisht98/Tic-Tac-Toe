@@ -238,10 +238,12 @@ class MainActivity : AppCompatActivity() {
             won = true
         }
         // Check Draw
-        if (checkDraw()) {
-            logoText!!.text = getString(R.string.draw)
-            draw!!.start()
-            won = true
+        if (!won) {
+            if (checkDraw()) {
+                logoText!!.text = getString(R.string.draw)
+                draw!!.start()
+                won = true
+            }
         } else {
             if (won) cheer!!.start()
         }
